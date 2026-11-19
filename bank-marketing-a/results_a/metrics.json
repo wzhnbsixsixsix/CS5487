@@ -1,0 +1,125 @@
+{
+  "seed": 42,
+  "ratios": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "include_duration": false,
+  "var_smoothing": 0.01,
+  "n_features": 50,
+  "feature_names": [
+    "age",
+    "balance",
+    "day",
+    "campaign",
+    "pdays",
+    "previous",
+    "job=admin.",
+    "job=blue-collar",
+    "job=entrepreneur",
+    "job=housemaid",
+    "job=management",
+    "job=retired",
+    "job=self-employed",
+    "job=services",
+    "job=student",
+    "job=technician",
+    "job=unemployed",
+    "job=unknown",
+    "marital=divorced",
+    "marital=married",
+    "marital=single",
+    "education=primary",
+    "education=secondary",
+    "education=tertiary",
+    "education=unknown",
+    "default=no",
+    "default=yes",
+    "housing=no",
+    "housing=yes",
+    "loan=no",
+    "loan=yes",
+    "contact=cellular",
+    "contact=telephone",
+    "contact=unknown",
+    "month=apr",
+    "month=aug",
+    "month=dec",
+    "month=feb",
+    "month=jan",
+    "month=jul",
+    "month=jun",
+    "month=mar",
+    "month=may",
+    "month=nov",
+    "month=oct",
+    "month=sep",
+    "poutcome=failure",
+    "poutcome=other",
+    "poutcome=success",
+    "poutcome=unknown"
+  ],
+  "validation_best_f1": 0.410828025477707,
+  "splits": {
+    "train": {
+      "n": 31648,
+      "no": 27946,
+      "yes": 3702,
+      "yes_rate": 0.116974216380182
+    },
+    "validation": {
+      "n": 6782,
+      "no": 5988,
+      "yes": 794,
+      "yes_rate": 0.11707460925980537
+    },
+    "test": {
+      "n": 6781,
+      "no": 5988,
+      "yes": 793,
+      "yes_rate": 0.11694440348031264
+    }
+  },
+  "test": {
+    "default": {
+      "log_odds_threshold": 0.0,
+      "confusion_matrix": [
+        [
+          5383,
+          605
+        ],
+        [
+          438,
+          355
+        ]
+      ],
+      "accuracy": 0.8461878778941159,
+      "precision": 0.3697916666666667,
+      "recall": 0.44766708701134933,
+      "f1": 0.4050199657729606
+    },
+    "validation_selected": {
+      "log_odds_threshold": -0.4701986458902665,
+      "confusion_matrix": [
+        [
+          5314,
+          674
+        ],
+        [
+          424,
+          369
+        ]
+      ],
+      "accuracy": 0.8380769797964902,
+      "precision": 0.3537871524448706,
+      "recall": 0.46532156368221944,
+      "f1": 0.4019607843137255
+    },
+    "ranking": {
+      "roc_auc": 0.7497154881431631,
+      "pr_auc": 0.35924710846752494,
+      "average_precision": 0.360424111729499
+    }
+  }
+}
