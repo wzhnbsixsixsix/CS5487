@@ -1,0 +1,2 @@
+-r ../bank-marketing-a/requirements.txt
+scipy>=1.11

@@ -1,0 +1,250 @@
+{
+  "data": {
+    "source": "https://doi.org/10.24432/C5K306",
+    "release": "UCI Bank Marketing / bank-full.csv",
+    "n": 45211,
+    "canonical_records_sha256": "fb565ef94276c4ae3a3623a46755c99904df26446c51cb6c0feed21834c03215"
+  },
+  "versions": {
+    "python": "3.12.7",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "matplotlib": "3.9.2"
+  },
+  "seed": 42,
+  "split_ratios": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "include_duration": false,
+  "gaussian_nb_var_smoothing": 0.01,
+  "splits": {
+    "train": {
+      "n": 31648,
+      "yes": 3702
+    },
+    "validation": {
+      "n": 6782,
+      "yes": 794
+    },
+    "test": {
+      "n": 6781,
+      "yes": 793
+    }
+  },
+  "cv": {
+    "folds": 5,
+    "metric": "mean fold trapezoidal PR-AUC",
+    "lambda_grid": [
+      0.0,
+      0.01,
+      0.1,
+      1.0,
+      3.0,
+      10.0,
+      30.0,
+      100.0,
+      300.0,
+      1000.0,
+      3000.0
+    ],
+    "selected_lambda": 10.0
+  },
+  "n_logistic_features": 41,
+  "reference_levels": {
+    "job": "admin.",
+    "marital": "divorced",
+    "education": "primary",
+    "default": "no",
+    "housing": "no",
+    "loan": "no",
+    "contact": "cellular",
+    "month": "apr",
+    "poutcome": "failure"
+  },
+  "numeric_scaling": {
+    "age": {
+      "mean": 40.89993048533873,
+      "scale": 10.670707875650361
+    },
+    "balance": {
+      "mean": 1376.1541329625884,
+      "scale": 3105.338166413606
+    },
+    "day": {
+      "mean": 15.80144084934277,
+      "scale": 8.317530577689954
+    },
+    "campaign": {
+      "mean": 2.76279701718908,
+      "scale": 3.08656248281404
+    },
+    "pdays": {
+      "mean": 40.61116026289181,
+      "scale": 100.19498131850965
+    },
+    "previous": {
+      "mean": 0.5945399393326593,
+      "scale": 2.485124706844336
+    }
+  },
+  "fit": {
+    "MLE": {
+      "iterations": 126,
+      "objective": 9478.147513379407,
+      "gradient_inf_norm": 0.00016726254506593818,
+      "coefficient_l2_norm": 3.7712974481349115
+    },
+    "MAP": {
+      "iterations": 109,
+      "objective": 9543.126962797893,
+      "gradient_inf_norm": 0.0001421319891115047,
+      "coefficient_l2_norm": 3.4539616411440544
+    }
+  },
+  "test_mle_map_disagreements": {
+    "0": {
+      "mle_yes_map_no": 0,
+      "mle_no_map_yes": 128
+    },
+    "1": {
+      "mle_yes_map_no": 0,
+      "mle_no_map_yes": 35
+    }
+  },
+  "test": {
+    "Gaussian NB": {
+      "validation_best_f1": 0.410828025477707,
+      "ranking": {
+        "roc_auc": 0.7497154881431631,
+        "pr_auc": 0.35924710846752494,
+        "average_precision": 0.360424111729499
+      },
+      "default": {
+        "log_odds_threshold": 0.0,
+        "probability_threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5383,
+            605
+          ],
+          [
+            438,
+            355
+          ]
+        ],
+        "accuracy": 0.8461878778941159,
+        "precision": 0.3697916666666667,
+        "recall": 0.44766708701134933,
+        "f1": 0.4050199657729606
+      },
+      "validation_selected": {
+        "log_odds_threshold": -0.4701986458902665,
+        "probability_threshold": 0.38456922786845854,
+        "confusion_matrix": [
+          [
+            5314,
+            674
+          ],
+          [
+            424,
+            369
+          ]
+        ],
+        "accuracy": 0.8380769797964902,
+        "precision": 0.3537871524448706,
+        "recall": 0.46532156368221944,
+        "f1": 0.4019607843137255
+      }
+    },
+    "MLE": {
+      "validation_best_f1": 0.4430538172715895,
+      "ranking": {
+        "roc_auc": 0.7638490516131042,
+        "pr_auc": 0.403700155056397,
+        "average_precision": 0.40430685427827767
+      },
+      "default": {
+        "log_odds_threshold": 0.0,
+        "probability_threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5923,
+            65
+          ],
+          [
+            670,
+            123
+          ]
+        ],
+        "accuracy": 0.89160890724082,
+        "precision": 0.6542553191489362,
+        "recall": 0.15510718789407313,
+        "f1": 0.25076452599388377
+      },
+      "validation_selected": {
+        "log_odds_threshold": -1.4421594088597345,
+        "probability_threshold": 0.19121117444688301,
+        "confusion_matrix": [
+          [
+            5562,
+            426
+          ],
+          [
+            448,
+            345
+          ]
+        ],
+        "accuracy": 0.8711104556850022,
+        "precision": 0.4474708171206226,
+        "recall": 0.43505674653215637,
+        "f1": 0.4411764705882353
+      }
+    },
+    "MAP": {
+      "validation_best_f1": 0.4416475972540046,
+      "ranking": {
+        "roc_auc": 0.7641234549805791,
+        "pr_auc": 0.4033848231690002,
+        "average_precision": 0.4039926136177045
+      },
+      "default": {
+        "log_odds_threshold": 0.0,
+        "probability_threshold": 0.5,
+        "confusion_matrix": [
+          [
+            5930,
+            58
+          ],
+          [
+            681,
+            112
+          ]
+        ],
+        "accuracy": 0.8910190237428108,
+        "precision": 0.6588235294117647,
+        "recall": 0.14123581336696092,
+        "f1": 0.23260643821391486
+      },
+      "validation_selected": {
+        "log_odds_threshold": -1.576026046940998,
+        "probability_threshold": 0.1713590271942947,
+        "confusion_matrix": [
+          [
+            5434,
+            554
+          ],
+          [
+            413,
+            380
+          ]
+        ],
+        "accuracy": 0.8573956643562897,
+        "precision": 0.4068522483940043,
+        "recall": 0.4791929382093317,
+        "f1": 0.4400694846554719
+      }
+    }
+  }
+}

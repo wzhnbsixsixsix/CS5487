@@ -1,0 +1,95 @@
+% 2026-11-22: Member B draft for the LNCS team report.
+% Place each subsection in the corresponding Method or Experiments and
+% Results section. Copy the figure and update its path to match the project.
+% Requires graphicx. Reference key moro2014bank:
+% Moro, S., Rita, P., Cortez, P.: Bank Marketing. UCI Machine Learning
+% Repository (2014). DOI: 10.24432/C5K306.
+
+% Method
+\subsection{Logistic Regression and Gaussian-Prior MAP}
+Let $x_i$ denote the processed features for record $i$, and let $y_i=1$
+indicate a term-deposit subscription. With $z_i=b+x_i^\top\beta$, the model
+assigns subscription score $\sigma(z_i)=(1+\exp(-z_i))^{-1}$. We compare
+two estimates of the same coefficients by minimizing
+\begin{equation}
+J_{\lambda}(b,\beta)=\sum_{i=1}^{n}
+\bigl[\log(1+\exp(z_i))-y_i z_i\bigr]
++\frac{\lambda}{2}\Vert\beta\Vert_2^2.
+\label{eq:b-penalized-nll}
+\end{equation}
+Setting $\lambda=0$ gives the maximum likelihood estimate (MLE).
+For $\lambda>0$, independent $\mathcal{N}(0,\lambda^{-1})$ priors on the
+slopes and a flat prior on the intercept give the maximum a posteriori
+(MAP) estimate. The slope gradient is $X^\top(p-y)+\lambda\beta$ and the
+intercept gradient is $\sum_i(p_i-y_i)$, where $p_i=\sigma(z_i)$. We
+implement the objective and gradient and solve both fits with L-BFGS.
+
+Both fits use the same training-derived numeric scaling and categorical
+encoding. We omit the first category in sorted order for each field so
+that the intercept and all category indicators do not encode the same
+information. The two logistic designs have 41 columns. The Gaussian
+naive Bayes baseline retains its original 50-column encoding.
+
+% Experiments and Results
+\subsection{Effect of the Gaussian Prior on Subscription Prediction}
+We use the 45,211 records from UCI \texttt{bank-full.csv}~\cite{moro2014bank}
+and the same stratified 70/15/15 split as the Gaussian naive Bayes
+baseline (seed 42). All three models exclude last-call duration, which
+becomes available after the call. Inside the training set, five
+stratified folds with seed 42 select $\lambda$ by mean trapezoidal PR-AUC.
+Each fold fits the encoder and scaler using its training portion.
+We refit on all 31,648 training records and independently choose each
+model's cutoff by maximizing F1 on the 6,782 validation records.
+
+The mean fold PR-AUC was 0.40617 for MLE and peaked at 0.40658 among the
+positive values at $\lambda=10$. Stronger priors gave 0.40516 at
+$\lambda=30$ and 0.39669 at $\lambda=100$. The selected prior reduced
+the slope norm from 3.771 to 3.454. For example, the previous-campaign
+success coefficient fell from 2.267 to 2.093 log-odds relative to failure.
+
+\begin{table}[tb]
+\caption{Test-set performance on 6,781 records, including 793
+subscriptions. Precision, recall, F1 and error counts use each model's
+validation-selected cutoff. PR-AUC uses trapezoidal integration.}
+\label{tab:b-test}
+\centering
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\hline
+Model & ROC-AUC & PR-AUC & Prec. & Recall & F1 & FP & FN \\
+\hline
+Gaussian NB & 0.7497 & 0.3592 & 0.3538 & 0.4653 & 0.4020 & 674 & 424 \\
+MLE & 0.7638 & 0.4037 & 0.4475 & 0.4351 & 0.4412 & 426 & 448 \\
+MAP & 0.7641 & 0.4034 & 0.4069 & 0.4792 & 0.4401 & 554 & 413 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{test_comparison.png}
+\caption{Test-set precision--recall curves and error counts. The dotted
+line marks the 11.7\% subscription rate. Bars use the same model colors
+as the curves.}
+\label{fig:b-test}
+\end{figure}
+
+Both logistic fits achieved higher test PR-AUC than Gaussian NB
+(Table~\ref{tab:b-test} and Fig.~\ref{fig:b-test}). Their PR curves nearly
+overlapped. At the cutoffs selected on validation data, MAP classified
+163 additional records as yes. Of these, 35 were subscribers and 128
+were false positives. Among records with cellular contact, the
+false-positive rate rose from 10.20\% to 13.48\%, and the false-negative
+rate fell from 53.15\% to 48.20\%. At a shared cutoff of 0.5, MAP
+produced 7 fewer false positives and 11 more false negatives than MLE.
+
+In the original CSV, record 45133 was a false positive for both fits.
+Previous-campaign success raised its fitted log-odds by 2.267 under MLE
+and 2.093 under MAP. Both fits missed subscriber 17874, whose 29 contacts
+in the current campaign contributed roughly $-2.49$ to both scores.
+MAP recovered subscriber 40887, whose log-odds moved from $-1.629$
+under MLE to $-1.502$ under MAP, clearing the MAP cutoff of $-1.576$.
+The additional false positive at record 42626 illustrates this cost.
+On this random split, shrinkage left the test ranking nearly unchanged.
+Its effect on errors varied with the cutoff. Performance on later
+campaigns remains untested.
