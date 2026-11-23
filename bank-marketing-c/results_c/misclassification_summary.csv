@@ -1,0 +1,4 @@
+﻿method,data_source,n_samples,n_correct,n_errors,tn,fp,fn,tp,error_rate,false_positive_rate,false_negative_rate,threshold_policy
+Original,group_a_bank_full,6781,5683,1098,5314,674,424,369,0.1619230202035098,0.11255845023380094,0.5346784363177806,validation_selected
+PCA,group_a_bank_full,6781,5831,950,5533,455,495,298,0.1400973307771715,0.07598530394121576,0.6242118537200504,validation_selected
+SVD,group_a_bank_full,6781,5895,886,5627,361,525,268,0.13065919480902521,0.060287241148964596,0.6620428751576293,validation_selected

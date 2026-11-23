@@ -1,0 +1,17 @@
+﻿method,source_record,transition,age,job,marital,education,default,balance,housing,loan,contact,day,month,campaign,pdays,previous,poutcome,y_true,original_pred,reduced_pred,original_log_odds,reduced_log_odds,original_threshold,reduced_threshold
+PCA,13409,corrected_FP,53,retired,single,tertiary,no,888,yes,no,cellular,9,jul,1,-1,0,unknown,0,1,0,-0.2351197719429834,-3.4570948105939774,-0.4701986458902665,-1.0663038625270538
+PCA,13741,corrected_FP,56,retired,married,secondary,no,289,no,no,cellular,10,jul,1,-1,0,unknown,0,1,0,0.08119061137434613,-3.2434054106124997,-0.4701986458902665,-1.0663038625270538
+PCA,3328,introduced_FP,53,entrepreneur,married,tertiary,no,22370,yes,no,unknown,15,may,1,-1,0,unknown,0,0,1,-4.706461497643495,1.35467213832775,-0.4701986458902665,-1.0663038625270538
+PCA,5310,introduced_FP,33,management,married,unknown,no,18347,yes,no,unknown,23,may,1,-1,0,unknown,0,0,1,-4.1046352285848755,-0.817972785634872,-0.4701986458902665,-1.0663038625270538
+PCA,31117,corrected_FN,75,retired,married,primary,no,358,no,no,cellular,17,feb,11,-1,0,unknown,1,0,1,-3.622678480991574,-0.916795370569389,-0.4701986458902665,-1.0663038625270538
+PCA,41084,corrected_FN,39,entrepreneur,married,tertiary,no,942,yes,no,cellular,14,aug,3,267,1,other,1,0,1,-3.120772985769481,-0.605269619954111,-0.4701986458902665,-1.0663038625270538
+PCA,18027,introduced_FN,60,retired,divorced,secondary,no,1091,no,no,cellular,30,jul,5,-1,0,unknown,1,1,0,-0.20707284451091468,-3.698021763218355,-0.4701986458902665,-1.0663038625270538
+PCA,21423,introduced_FN,58,retired,married,primary,no,1241,no,no,cellular,18,aug,2,-1,0,unknown,1,1,0,-0.30176871003464356,-3.9391028991147046,-0.4701986458902665,-1.0663038625270538
+SVD,204,corrected_FP,35,student,single,unknown,no,298,yes,no,unknown,5,may,2,-1,0,unknown,0,1,0,0.9168761443670874,-0.17715008389886577,-0.4701986458902665,0.24406676253259008
+SVD,769,corrected_FP,29,student,single,secondary,no,110,yes,no,unknown,7,may,3,-1,0,unknown,0,1,0,-0.3961340380668297,-0.3795686173381423,-0.4701986458902665,0.24406676253259008
+SVD,1365,introduced_FP,41,unemployed,married,primary,yes,-581,yes,no,unknown,8,may,2,-1,0,unknown,0,0,1,-26.5017063649819,1.591888081853238,-0.4701986458902665,0.24406676253259008
+SVD,2366,introduced_FP,32,unemployed,married,secondary,yes,2,yes,no,unknown,13,may,2,-1,0,unknown,0,0,1,-25.47370193530289,1.4915782359289693,-0.4701986458902665,0.24406676253259008
+SVD,24566,corrected_FN,41,self-employed,married,secondary,yes,0,yes,no,cellular,17,nov,1,-1,0,unknown,1,0,1,-22.598310044719057,2.203764548941784,-0.4701986458902665,0.24406676253259008
+SVD,32825,corrected_FN,33,blue-collar,divorced,unknown,yes,-274,yes,yes,cellular,17,apr,2,329,2,failure,1,0,1,-18.887713921337507,5.14192398732208,-0.4701986458902665,0.24406676253259008
+SVD,15795,introduced_FN,25,student,married,tertiary,no,10,yes,no,cellular,21,jul,4,-1,0,unknown,1,1,0,4.044317306744304,0.2252320208254055,-0.4701986458902665,0.24406676253259008
+SVD,18027,introduced_FN,60,retired,divorced,secondary,no,1091,no,no,cellular,30,jul,5,-1,0,unknown,1,1,0,-0.20707284451091468,-3.940324372642623,-0.4701986458902665,0.24406676253259008
