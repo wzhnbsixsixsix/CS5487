@@ -1,0 +1,248 @@
+{
+  "n_test": 6781,
+  "n_positive": 793,
+  "prevalence": 0.11694440348031264,
+  "operating_points": [
+    {
+      "model": "gnb",
+      "threshold_log_odds": -0.4701986458902665,
+      "threshold_probability": 0.38456922786845854,
+      "predicted_positive": 1043,
+      "positive_share": 0.15381212210588407,
+      "tp": 369,
+      "fp": 674,
+      "fn": 424,
+      "tn": 5314,
+      "accuracy": 0.8380769797964902,
+      "precision": 0.3537871524448706,
+      "recall": 0.46532156368221944,
+      "f1": 0.4019607843137255
+    },
+    {
+      "model": "lr_mle",
+      "threshold_log_odds": -1.4421594163168636,
+      "threshold_probability": 0.19121117329364198,
+      "predicted_positive": 771,
+      "positive_share": 0.11370004424126236,
+      "tp": 345,
+      "fp": 426,
+      "fn": 448,
+      "tn": 5562,
+      "accuracy": 0.8711104556850022,
+      "precision": 0.4474708171206226,
+      "recall": 0.43505674653215637,
+      "f1": 0.4411764705882353
+    },
+    {
+      "model": "lr_map",
+      "threshold_log_odds": -1.5760260475689432,
+      "threshold_probability": 0.17135902710512954,
+      "predicted_positive": 934,
+      "positive_share": 0.13773779678513492,
+      "tp": 380,
+      "fp": 554,
+      "fn": 413,
+      "tn": 5434,
+      "accuracy": 0.8573956643562897,
+      "precision": 0.4068522483940043,
+      "recall": 0.4791929382093317,
+      "f1": 0.4400694846554719
+    },
+    {
+      "model": "pca_gnb",
+      "threshold_log_odds": -1.066303862527123,
+      "threshold_probability": 0.2561066225597707,
+      "predicted_positive": 753,
+      "positive_share": 0.11104556850022121,
+      "tp": 298,
+      "fp": 455,
+      "fn": 495,
+      "tn": 5533,
+      "accuracy": 0.8599026692228285,
+      "precision": 0.39575033200531207,
+      "recall": 0.37578814627994955,
+      "f1": 0.3855109961190168
+    },
+    {
+      "model": "svd_gnb",
+      "threshold_log_odds": 0.2440667625326256,
+      "threshold_probability": 0.5607155942697707,
+      "predicted_positive": 629,
+      "positive_share": 0.09275918006193777,
+      "tp": 268,
+      "fp": 361,
+      "fn": 525,
+      "tn": 5627,
+      "accuracy": 0.8693408051909748,
+      "precision": 0.4260731319554849,
+      "recall": 0.3379571248423707,
+      "f1": 0.3769338959212377
+    }
+  ],
+  "best_threshold_segments": [
+    {
+      "winner": "lr_map",
+      "ratio_from": 1.0,
+      "ratio_to": 1.0
+    },
+    {
+      "winner": "lr_mle",
+      "ratio_from": 1.25,
+      "ratio_to": 3.5
+    },
+    {
+      "winner": "lr_map",
+      "ratio_from": 3.75,
+      "ratio_to": 4.0
+    },
+    {
+      "winner": "lr_mle",
+      "ratio_from": 4.25,
+      "ratio_to": 7.0
+    },
+    {
+      "winner": "lr_map",
+      "ratio_from": 7.25,
+      "ratio_to": 10.75
+    },
+    {
+      "winner": "lr_mle",
+      "ratio_from": 11.0,
+      "ratio_to": 13.0
+    },
+    {
+      "winner": "gnb",
+      "ratio_from": 13.25,
+      "ratio_to": 13.25
+    },
+    {
+      "winner": "lr_map",
+      "ratio_from": 13.5,
+      "ratio_to": 15.25
+    },
+    {
+      "winner": "lr_mle",
+      "ratio_from": 15.5,
+      "ratio_to": 20.0
+    }
+  ],
+  "fixed_threshold_segments": [
+    {
+      "winner": "lr_mle",
+      "ratio_from": 1.0,
+      "ratio_to": 3.5
+    },
+    {
+      "winner": "lr_map",
+      "ratio_from": 3.75,
+      "ratio_to": 20.0
+    }
+  ],
+  "headline": [
+    {
+      "cost_ratio": 1.0,
+      "best_model": "lr_map",
+      "best_cost_per_1000": 107.21132576316178,
+      "fixed_threshold_model": "lr_mle",
+      "fixed_threshold_cost_per_1000": 128.8895443149978,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 128.8895443149978,
+      "team_pick_overspend_vs_best_pct": 20.220082530949114,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 116.94440348031264,
+      "best_vs_call_nobody_pct": 8.322824716267341
+    },
+    {
+      "cost_ratio": 2.0,
+      "best_model": "lr_mle",
+      "best_cost_per_1000": 186.8455979943961,
+      "fixed_threshold_model": "lr_mle",
+      "fixed_threshold_cost_per_1000": 194.9564960920218,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 194.9564960920218,
+      "team_pick_overspend_vs_best_pct": 4.340962904498813,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 233.8888069606253,
+      "best_vs_call_nobody_pct": 20.11349306431275
+    },
+    {
+      "cost_ratio": 3.0,
+      "best_model": "lr_mle",
+      "best_cost_per_1000": 258.0740303790002,
+      "fixed_threshold_model": "lr_mle",
+      "fixed_threshold_cost_per_1000": 261.02344786904587,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 261.02344786904587,
+      "team_pick_overspend_vs_best_pct": 1.1428571428571344,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 350.8332104409379,
+      "best_vs_call_nobody_pct": 26.439680538041177
+    },
+    {
+      "cost_ratio": 5.0,
+      "best_model": "lr_mle",
+      "best_cost_per_1000": 382.9818610824362,
+      "fixed_threshold_model": "lr_map",
+      "fixed_threshold_cost_per_1000": 386.2262203214865,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 393.1573514230939,
+      "team_pick_overspend_vs_best_pct": 2.6569118213323195,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 584.7220174015631,
+      "best_vs_call_nobody_pct": 34.50189155107187
+    },
+    {
+      "cost_ratio": 7.0,
+      "best_model": "lr_mle",
+      "best_cost_per_1000": 500.36867718625564,
+      "fixed_threshold_model": "lr_map",
+      "fixed_threshold_cost_per_1000": 508.0371626603746,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 525.291254977142,
+      "team_pick_overspend_vs_best_pct": 4.9808429118774145,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 818.6108243621885,
+      "best_vs_call_nobody_pct": 38.87587822014053
+    },
+    {
+      "cost_ratio": 10.0,
+      "best_model": "lr_map",
+      "best_cost_per_1000": 631.7652263677924,
+      "fixed_threshold_model": "lr_map",
+      "fixed_threshold_cost_per_1000": 690.7535761687067,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 723.4921103082141,
+      "team_pick_overspend_vs_best_pct": 14.519140989729218,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 1169.4440348031262,
+      "best_vs_call_nobody_pct": 45.977301387137445
+    },
+    {
+      "cost_ratio": 15.0,
+      "best_model": "lr_map",
+      "best_cost_per_1000": 752.2489308361598,
+      "fixed_threshold_model": "lr_map",
+      "fixed_threshold_cost_per_1000": 995.2809320159269,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 1053.8268691933345,
+      "team_pick_overspend_vs_best_pct": 40.090178396392886,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 1754.1660522046895,
+      "best_vs_call_nobody_pct": 57.11643547709122
+    },
+    {
+      "cost_ratio": 20.0,
+      "best_model": "lr_mle",
+      "best_cost_per_1000": 789.1166494617313,
+      "fixed_threshold_model": "lr_map",
+      "fixed_threshold_cost_per_1000": 1299.808287863147,
+      "team_pick": "lr_mle",
+      "team_pick_cost_per_1000": 1384.1616280784544,
+      "team_pick_overspend_vs_best_pct": 75.40646608110633,
+      "call_everybody_cost_per_1000": 883.0555965196874,
+      "call_nobody_cost_per_1000": 2338.8880696062524,
+      "best_vs_call_nobody_pct": 66.26103404791928
+    }
+  ],
+  "notes": "cost = FP + ratio*FN per 1,000 clients. 'best' re-picks the threshold for each ratio; 'fixed' keeps the validation-selected F1 threshold."
+}

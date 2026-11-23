@@ -1,0 +1,245 @@
+{
+  "base_prevalence": 0.11694440348031264,
+  "roc_auc_spread_across_prevalences": {
+    "gnb": 6.061817714453355e-14,
+    "lr_mle": 5.839773109528323e-14,
+    "lr_map": 5.81756864903582e-14,
+    "pca_gnb": 6.183942247162122e-14,
+    "svd_gnb": 6.394884621840902e-14
+  },
+  "pr_auc_at_base": {
+    "gnb": 0.35924710846752494,
+    "lr_mle": 0.403700155056397,
+    "lr_map": 0.4033848231690002,
+    "pca_gnb": 0.3314949794943484,
+    "svd_gnb": 0.3219585365736791
+  },
+  "reported": [
+    {
+      "prevalence": 0.05,
+      "model": "gnb",
+      "roc_auc": 0.7497154881431451,
+      "pr_auc": 0.1990647180961471,
+      "lift": 3.9812943619229415,
+      "brier": 0.10999353899689915,
+      "f1_optimal_threshold_probability": 0.9999876936126229
+    },
+    {
+      "prevalence": 0.05,
+      "model": "lr_mle",
+      "roc_auc": 0.7638490516130867,
+      "pr_auc": 0.24075156732101202,
+      "lift": 4.81503134642024,
+      "brier": 0.046607616835873555,
+      "f1_optimal_threshold_probability": 0.24424091354535035
+    },
+    {
+      "prevalence": 0.05,
+      "model": "lr_map",
+      "roc_auc": 0.7641234549805614,
+      "pr_auc": 0.24041900557033188,
+      "lift": 4.808380111406637,
+      "brier": 0.04650896386935378,
+      "f1_optimal_threshold_probability": 0.2425259981870315
+    },
+    {
+      "prevalence": 0.05,
+      "model": "pca_gnb",
+      "roc_auc": 0.7336547832950282,
+      "pr_auc": 0.17642168042515297,
+      "lift": 3.528433608503059,
+      "brier": 0.082531958626715,
+      "f1_optimal_threshold_probability": 0.9481413796615766
+    },
+    {
+      "prevalence": 0.05,
+      "model": "svd_gnb",
+      "roc_auc": 0.7285794792611505,
+      "pr_auc": 0.16964242606936697,
+      "lift": 3.3928485213873394,
+      "brier": 0.08382645250727556,
+      "f1_optimal_threshold_probability": 0.8560317319360145
+    },
+    {
+      "prevalence": 0.11694440348031264,
+      "model": "gnb",
+      "roc_auc": 0.7497154881431631,
+      "pr_auc": 0.35924710846752494,
+      "lift": 3.071947846807423,
+      "brier": 0.13820595115855702,
+      "f1_optimal_threshold_probability": 0.48930729402714895
+    },
+    {
+      "prevalence": 0.11694440348031264,
+      "model": "lr_mle",
+      "roc_auc": 0.7638490516131042,
+      "pr_auc": 0.403700155056397,
+      "lift": 3.452069043426769,
+      "brier": 0.0863178744623201,
+      "f1_optimal_threshold_probability": 0.19758810061204635
+    },
+    {
+      "prevalence": 0.11694440348031264,
+      "model": "lr_map",
+      "roc_auc": 0.7641234549805791,
+      "pr_auc": 0.4033848231690002,
+      "lift": 3.449372617791917,
+      "brier": 0.08652332226362149,
+      "f1_optimal_threshold_probability": 0.1792845131257623
+    },
+    {
+      "prevalence": 0.11694440348031264,
+      "model": "pca_gnb",
+      "roc_auc": 0.7336547832950474,
+      "pr_auc": 0.3314949794943484,
+      "lift": 2.834637397164157,
+      "brier": 0.11979049850899058,
+      "f1_optimal_threshold_probability": 0.036215732894539485
+    },
+    {
+      "prevalence": 0.11694440348031264,
+      "model": "svd_gnb",
+      "roc_auc": 0.7285794792611705,
+      "pr_auc": 0.3219585365736791,
+      "lift": 2.7530905882800987,
+      "brier": 0.12129593056383368,
+      "f1_optimal_threshold_probability": 0.8560317319360145
+    },
+    {
+      "prevalence": 0.2,
+      "model": "gnb",
+      "roc_auc": 0.749715488143142,
+      "pr_auc": 0.4912728961646591,
+      "lift": 2.456364480823295,
+      "brier": 0.1732081111529303,
+      "f1_optimal_threshold_probability": 0.13129323466389275
+    },
+    {
+      "prevalence": 0.2,
+      "model": "lr_mle",
+      "roc_auc": 0.7638490516130845,
+      "pr_auc": 0.5308454381784162,
+      "lift": 2.654227190892081,
+      "brier": 0.13558501202199563,
+      "f1_optimal_threshold_probability": 0.16371836335196316
+    },
+    {
+      "prevalence": 0.2,
+      "model": "lr_map",
+      "roc_auc": 0.7641234549805593,
+      "pr_auc": 0.5306885289069841,
+      "lift": 2.6534426445349206,
+      "brier": 0.13616774708497095,
+      "f1_optimal_threshold_probability": 0.16331148470514256
+    },
+    {
+      "prevalence": 0.2,
+      "model": "pca_gnb",
+      "roc_auc": 0.733654783295027,
+      "pr_auc": 0.4647351630434478,
+      "lift": 2.3236758152172388,
+      "brier": 0.16601587500793893,
+      "f1_optimal_threshold_probability": 0.02417364269477388
+    },
+    {
+      "prevalence": 0.2,
+      "model": "svd_gnb",
+      "roc_auc": 0.7285794792611495,
+      "pr_auc": 0.4548264664238904,
+      "lift": 2.2741323321194518,
+      "brier": 0.16778301073004923,
+      "f1_optimal_threshold_probability": 0.017008890104177242
+    },
+    {
+      "prevalence": 0.3,
+      "model": "gnb",
+      "roc_auc": 0.7497154881431858,
+      "pr_auc": 0.6049821068125103,
+      "lift": 2.0166070227083677,
+      "brier": 0.21535115925695106,
+      "f1_optimal_threshold_probability": 0.13129323466389275
+    },
+    {
+      "prevalence": 0.3,
+      "model": "lr_mle",
+      "roc_auc": 0.7638490516131258,
+      "pr_auc": 0.6375545555933317,
+      "lift": 2.1251818519777728,
+      "brier": 0.19490327547941033,
+      "f1_optimal_threshold_probability": 0.12628519793196424
+    },
+    {
+      "prevalence": 0.3,
+      "model": "lr_map",
+      "roc_auc": 0.7641234549806004,
+      "pr_auc": 0.637546605265964,
+      "lift": 2.125155350886547,
+      "brier": 0.19594026922871574,
+      "f1_optimal_threshold_probability": 0.12499944314957011
+    },
+    {
+      "prevalence": 0.3,
+      "model": "pca_gnb",
+      "roc_auc": 0.73365478329507,
+      "pr_auc": 0.581850836637686,
+      "lift": 1.9395027887922867,
+      "brier": 0.22167181926208823,
+      "f1_optimal_threshold_probability": 0.013796772531421614
+    },
+    {
+      "prevalence": 0.3,
+      "model": "svd_gnb",
+      "roc_auc": 0.7285794792611933,
+      "pr_auc": 0.5728754732404029,
+      "lift": 1.909584910801343,
+      "brier": 0.22375404954523162,
+      "f1_optimal_threshold_probability": 0.012825703131822866
+    },
+    {
+      "prevalence": 0.5,
+      "model": "gnb",
+      "roc_auc": 0.7497154881431585,
+      "pr_auc": 0.7631041646663784,
+      "lift": 1.5262083293327569,
+      "brier": 0.2996372554649926,
+      "f1_optimal_threshold_probability": 0.0003416058951881111
+    },
+    {
+      "prevalence": 0.5,
+      "model": "lr_mle",
+      "roc_auc": 0.7638490516130996,
+      "pr_auc": 0.7836699670513965,
+      "lift": 1.567339934102793,
+      "brier": 0.3135398023942398,
+      "f1_optimal_threshold_probability": 0.054583145180749214
+    },
+    {
+      "prevalence": 0.5,
+      "model": "lr_map",
+      "roc_auc": 0.7641234549805743,
+      "pr_auc": 0.7837754829240849,
+      "lift": 1.5675509658481699,
+      "brier": 0.3154853135162053,
+      "f1_optimal_threshold_probability": 0.055134900513454224
+    },
+    {
+      "prevalence": 0.5,
+      "model": "pca_gnb",
+      "roc_auc": 0.7336547832950424,
+      "pr_auc": 0.7471181678108814,
+      "lift": 1.4942363356217627,
+      "brier": 0.33298370777038677,
+      "f1_optimal_threshold_probability": 0.0012468180514465877
+    },
+    {
+      "prevalence": 0.5,
+      "model": "svd_gnb",
+      "roc_auc": 0.7285794792611655,
+      "pr_auc": 0.7409710926964053,
+      "lift": 1.4819421853928105,
+      "brier": 0.33569612717559655,
+      "f1_optimal_threshold_probability": 0.0006381545647746695
+    }
+  ],
+  "notes": "Weights are p'/p for positives and (1-p')/(1-p) for negatives; no record is added, removed or relabelled. ROC-AUC is invariant because both axes are within-class rates; PR-AUC is not, because precision mixes both classes."
+}

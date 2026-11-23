@@ -1,0 +1,2 @@
+-r ../bank-marketing-b/requirements.txt
+-r ../bank-marketing-c/requirements.txt

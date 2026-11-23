@@ -1,0 +1,132 @@
+% 2026-11-23: Member D draft for the LNCS team report.
+% Place the Method subsection in Method, and the remaining text plus the
+% table and figures in Experiments and Results. Requires graphicx.
+% Reference key moro2014bank:
+%   Moro, S., Rita, P., Cortez, P.: Bank Marketing. UCI Machine Learning
+%   Repository (2014). DOI: 10.24432/C5K306.
+% Length: about one page with both figures. If the section budget is tight,
+% drop the second figure (prior shift) and keep its numbers in the text.
+
+% ------------------------------------------------------------------ Method
+\subsection{Cost-Sensitive and Prior-Shift Evaluation}
+
+Let $s_i$ be the log-odds assigned to record $i$ by a model, and let
+$\hat y_i(t)=\mathbf{1}[s_i\ge t]$ be the decision induced by a cutoff $t$.
+Ranking metrics such as ROC-AUC and trapezoidal PR-AUC summarise the whole
+sweep over $t$, but every deployed rule commits to one $t$. We therefore
+score an operating point by its expected cost,
+\begin{equation}
+C(t;r)=\mathrm{FP}(t)+r\,\mathrm{FN}(t)
+\quad\text{per }1{,}000\text{ records},
+\label{eq:d-cost}
+\end{equation}
+where $r$ is the cost of one missed subscriber relative to one wasted call.
+Setting $r=1$ reproduces the symmetric error weighting that F1 and accuracy
+imply. For each $r$ we report the cost of the best threshold per model, the
+cost of the threshold that the validation split selected by maximising F1,
+and the two trivial policies of calling nobody and calling everybody.
+
+To probe the dependence on the base rate we reweight rather than resample.
+Positives receive $w_{+}=\pi'/\pi$ and negatives $w_{-}=(1-\pi')/(1-\pi)$,
+where $\pi$ is the observed positive rate and $\pi'$ the target one; weighted
+precision, recall and both AUCs follow from the weighted cumulative counts.
+No record is added, removed or relabelled, so the analysis isolates the
+effect of the base rate on the metric itself. At $\pi'=\pi$ the weighted
+metrics coincide with the unweighted ones to six decimal places.
+
+% ------------------------------------------- Experiments and Results
+\subsection{How Much of the Comparison Survives the Assumptions?}
+
+We evaluate the five models of this report on the 6,781 test records
+(793 subscriptions, 11.69\%) with the same split, feature encoding and
+exclusion of call duration as the rest of the report, and no other change:
+Gaussian NB on 50 encoded columns (member A), logistic regression in its
+MLE and Gaussian-prior MAP forms on 41 columns with $\lambda=10$ (member B),
+and the same NB on 45 PCA or SVD components (member C). Re-fitting all five
+from their modules reproduces every published ROC-AUC and PR-AUC to within
+$5\times10^{-7}$. Each cutoff is the one that maximises F1 on the 6,782
+validation records.
+
+\paragraph{Model choice is not the decisive variable.}
+Under the cost of \eqref{eq:d-cost} the five models lie within
+$0.65\%$ of one another at every ratio from $1$ to $20$: at $r=20$ the
+cheapest model costs $789$ per $1{,}000$ clients and the most expensive
+$839$, whereas the ranking between the two logistic fits alternates with
+differences of a few tenths of a percent. The ordering is stable in one
+respect only: the two logistic fits lead the naive-Bayes family at every
+ratio, and the ordering of all five models is unchanged across the sixty
+base rates examined below.
+
+\paragraph{The cutoff is.}
+Holding the models fixed and moving only the cutoff changes the cost by far
+more (Table~\ref{tab:d-cost} and Fig.~\ref{fig:d-f1}). The validation-selected
+F1 threshold is already $20\%$ above the optimum at $r=1$, and $75\%$ above
+it at $r=20$, because maximising F1 assumes the two error types cost the
+same. At $r=1$ the best model is also only $8.3\%$ cheaper than the trivial
+policy of calling nobody, since predicting no for every record already
+reaches $88.31\%$ accuracy; the model earns its cost once a missed
+subscriber is about three times as expensive as a wasted call.
+
+\begin{table}[tb]
+\caption{Cost of the deployed cutoff versus the cheapest achievable cost,
+per $1{,}000$ test clients. ``Deployed'' is the logistic fit with the
+highest F1 (MLE) at its validation-selected threshold; ``best'' re-picks
+the model \emph{and} the threshold for each ratio. The trivial policies
+cost $r\cdot 116.9$ (call nobody) and $883.1$ (call everybody).}
+\label{tab:d-cost}
+\centering
+\setlength{\tabcolsep}{4.2pt}
+\begin{tabular}{@{}lrrrr@{}}
+\hline
+$r$ & Best cost & Deployed cost & Excess & Below ``nobody'' \\
+\hline
+1  & 107.2  & 128.9  & $+20.2\%$ & $8.3\%$  \\
+5  & 383.0  & 393.2  & $+2.7\%$  & $34.5\%$ \\
+10 & 631.8  & 723.5  & $+14.5\%$ & $46.0\%$ \\
+15 & 752.2  & 1053.8 & $+40.1\%$ & $57.1\%$ \\
+20 & 789.1  & 1384.2 & $+75.4\%$ & $66.3\%$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{s1_f1_vs_threshold.png}
+\caption{F1 against the probability cutoff on the test split, one curve per
+model; the marker is the validation-selected threshold actually deployed.
+The logistic fits peak in a narrow band and collapse away from it, whereas
+the three naive-Bayes models are flat between $0.2$ and $0.8$: their
+``optimal'' cutoff is not identifiable, and consequently neither is any
+prior-shift adjustment of it.}
+\label{fig:d-f1}
+\end{figure}
+
+\paragraph{The base rate changes the metric, not the ranking.}
+Reweighting the test set to positive rates between $2\%$ and $60\%$ leaves
+ROC-AUC numerically constant (range $6.4\times10^{-14}$ over sixty
+settings), while the best model's PR-AUC moves from $0.241$ at $5\%$ to
+$0.784$ at $50\%$. Measured against the random baseline, which equals the
+positive rate itself, the same model is $4.82$ times better than chance at
+$5\%$ and only $1.57$ times better at $50\%$
+(Fig.~\ref{fig:d-shift}). The rank order of the five models is unchanged at
+every base rate. The practical reading is twofold: a bare
+``PR-AUC $=0.404$'' is not interpretable without its $11.69\%$ base rate
+and should be quoted as a multiple of the baseline, and the model is worth
+deploying mainly where subscriptions are rare. Re-tuning the cutoff for a
+shifted base rate is well behaved for the logistic fits, whose optimum
+moves monotonically from $0.244$ at $5\%$ to $0.055$ at $50\%$, but is
+ill-defined for the naive-Bayes models, whose optimum jumps between
+$1.000$ and $0.0003$ across the same range.
+
+% Optional: delete this figure and keep the numbers in the text if the
+% section would otherwise exceed its page budget.
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\textwidth]{s3_prior_shift.png}
+\caption{Prior-shift sensitivity. Left: ROC-AUC is invariant by
+construction, because both of its axes are within-class rates. Right:
+PR-AUC rises with the positive rate because precision mixes both classes;
+the dashed line is the random baseline, which is the positive rate itself.
+The dotted line marks the $11.69\%$ rate of this split.}
+\label{fig:d-shift}
+\end{figure}
