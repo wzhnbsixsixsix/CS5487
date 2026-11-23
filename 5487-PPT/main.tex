@@ -1,0 +1,151 @@
+% !TEX program = xelatex
+% !TEX root = main.tex
+% Example presentation for the community-maintained CityUHK (Dongguan) theme.
+\documentclass[10pt,aspectratio=169]{beamer}
+\usepackage{xeCJK}
+\usepackage{mathtools}
+\usetheme{CityUDG}
+
+% Portable fonts bundled with TeX Live; no macOS-only fonts are required.
+\setCJKmainfont{FandolSong-Regular.otf}
+\setCJKsansfont{FandolHei-Regular.otf}
+\setCJKmonofont{FandolFang-Regular.otf}
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\normalsize}
+\title[CityUHK (Dongguan)]{Presentation Title / 演示标题}
+\subtitle{Research presentation / 学术汇报}
+\author[Author Name]{Author Name / 作者姓名}
+\institute{City University of Hong Kong (Dongguan)\\香港城市大学（东莞）}
+\date{\today}
+
+\AtBeginSection[]{%
+  \begin{frame}
+    \vfill
+    \begin{beamercolorbox}[sep=10pt,center]{title}
+      \usebeamerfont{title}\insertsectionhead
+    \end{beamercolorbox}
+    \vfill
+  \end{frame}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Contents / 目录}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction / 引言}
+\begin{frame}{Getting started / 开始使用}
+  \begin{itemize}
+    \item Edit the title, author and institute in \texttt{main.tex}.
+    \item Compile with XeLaTeX; Chinese and English can be mixed directly.
+    \item 修改标题、作者和正文，保留主题与图片文件即可使用。
+  \end{itemize}
+  \begin{block}{Design / 设计}
+    Burgundy headings, orange accents and the supplied university logo.
+  \end{block}
+\end{frame}
+
+\section{Examples / 示例}
+\begin{frame}{Blocks / 内容块}
+  \begin{block}{Main result / 主要结果}
+    Present a claim, definition or key finding here.
+  \end{block}
+  \begin{alertblock}{Important / 重点}
+    Use the orange accent to highlight important information.
+  \end{alertblock}
+  \begin{exampleblock}{Example / 例子}
+    支持中英文混排，也可以添加自己的图表和公式。
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Mathematics and tables / 公式与表格}
+  \begin{equation*}
+    \mathcal{L}(\theta)=\frac{1}{N}\sum_{i=1}^{N}
+      \bigl(f_\theta(x_i)-y_i\bigr)^2
+  \end{equation*}
+  \vspace{0.3cm}
+  \centering
+  \begin{tabular}{lcc}
+    \hline
+    Method / 方法 & Accuracy / 准确率 & Time / 时间 \\
+    \hline
+    Baseline & 0.85 & 1.0 s \\
+    Proposed & 0.91 & 0.8 s \\
+    \hline
+  \end{tabular}
+  \par\medskip{\footnotesize Illustrative data only / 数据仅用于演示}
+\end{frame}
+
+% 2026-11-23: Member B results added directly to the restored template.
+% Keep the original sections and suppress the divider for these two slides.
+\begingroup
+  \AtBeginSection[]{}
+  \section{Member B / Logistic Regression}
+
+% Method, selected lambda and coefficient norms: member B commit 5309575,
+% bank_marketing_b.py and results_b/{cv_pr_auc.csv,coefficients.csv,metrics.json}.
+\begin{frame}{Logistic regression with a Gaussian prior}
+  \begin{block}{Objective implemented for both models}
+    \[
+      \underbrace{\vphantom{\frac{\lambda}{2}}-\log p(\mathbf y\mid X,b,\boldsymbol\beta)}_{\text{logistic loss}}
+      + \underbrace{\frac{\lambda}{2}\lVert\boldsymbol\beta\rVert_2^2}_{\text{L2 penalty}}
+    \]
+    \centering
+    \textbf{MLE} \(\lambda=0\) \qquad
+    \textbf{MAP} \(\lambda=10\) \quad (zero-mean Gaussian prior)
+    \vspace{0.3em}
+  \end{block}
+  \medskip
+  \begin{itemize}
+    \setlength{\itemsep}{0.4em}
+    \item Same 41 features and fixed split. The intercept is unpenalized.
+    \item Select \(\lambda\) by 5-fold training PR-AUC and cutoffs by validation F1.
+    \item The prior reduced the coefficient norm from 3.771 to 3.454 (8.4\%).
+  \end{itemize}
+\end{frame}
+
+% Test metrics and both cutoff comparisons: member B commit 5309575,
+% results_b/metrics.json and results_b/RESULTS.md.
+\begin{frame}{MLE and MAP had nearly identical test PR-AUC}
+  \centering
+  \small 6,781 test records, including 793 subscribers\par
+  \medskip
+  \normalsize
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular*}{0.95\textwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+    \hline
+    \textbf{Model} & \textbf{PR-AUC} & \textbf{Recall} &
+      \textbf{False positives} & \textbf{False negatives} \\
+    \hline
+    Gaussian NB (A) & 0.3592 & 46.5\% & 674 & 424 \\
+    MLE & 0.4037 & 43.5\% & 426 & 448 \\
+    MAP & 0.4034 & 47.9\% & 554 & 413 \\
+    \hline
+  \end{tabular*}\par
+  \smallskip
+  {\footnotesize Recall and error counts use each model's validation-selected cutoff.\par}
+  \bigskip
+  {\color{DGBurgundy}\bfseries MAP found 35 more subscribers and added 128 false positives.\par}
+  \smallskip
+  {\small At a shared 0.5 cutoff, MAP missed 11 more subscribers than MLE.\par}
+\end{frame}
+\endgroup
+
+\section{Conclusion / 总结}
+\begin{frame}{Summary / 总结}
+  \begin{enumerate}
+    \item State the problem and your approach.
+    \item Summarize the evidence and main result.
+    \item 说明局限与下一步工作。
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Questions / 交流}
+  \centering
+  {\color{DGBurgundy}\Huge Thank you! / 谢谢！}
+\end{frame}
+\end{document}
