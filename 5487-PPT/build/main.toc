@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Introduction / 引言}{3}{0}{1}
-\beamer@sectionintoc {2}{Examples / 示例}{5}{0}{2}
-\beamer@sectionintoc {3}{Member B / Logistic Regression}{8}{0}{3}
-\beamer@sectionintoc {4}{Conclusion / 总结}{10}{0}{4}
